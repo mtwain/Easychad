@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_tab_pressed">#fff2784b</color>
+    <color name="chat_background_color">#ffd6e4ef</color>
+    <color name="gallery_background_color">#ff000000</color>
+    <color name="settings_background_color">#ffffffff</color>
+    <color name="divider">#dcdcdc</color>
+    <color name="header">#ff7a5ba7</color>
+    <color name="yellow1">#fff5d76e</color>
+    <color name="yellow2">#fffde860</color>
+</resources>
