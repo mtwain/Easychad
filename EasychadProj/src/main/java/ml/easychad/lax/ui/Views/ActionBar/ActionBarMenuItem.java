@@ -9,7 +9,6 @@
 package ml.easychad.lax.ui.Views.ActionBar;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Build;
 import android.text.Editable;
@@ -129,6 +128,7 @@ public class ActionBarMenuItem extends ImageView {
             popupLayout = new ActionBarPopupWindow.ActionBarPopupWindowLayout(getContext());
             popupLayout.setOrientation(LinearLayout.VERTICAL);
             popupLayout.setBackgroundResource(R.drawable.popup_fixed);
+
             popupLayout.setOnTouchListener(new OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
@@ -167,7 +167,7 @@ public class ActionBarMenuItem extends ImageView {
 
         textView.setTypeface(AndroidUtilities.getTypeface("fonts/Roboto-Light.ttf"));//TODO: right menu font
 
-        textView.setBackgroundColor(Color.parseColor("#ff7a5ba7"));//TODO: color of right menu
+
         textView.setBackgroundResource(R.drawable.list_selector2);//TODO: right menu selector
         if (!LocaleController.isRTL) {
             textView.setGravity(Gravity.CENTER_VERTICAL);

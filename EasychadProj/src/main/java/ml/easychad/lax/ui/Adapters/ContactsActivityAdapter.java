@@ -159,7 +159,7 @@ public class ContactsActivityAdapter extends SectionedBaseAdapter {
         } else {
             textView.setText(contact.last_name);
         }
-        textView.setTypeface(AndroidUtilities.getTypeface("fonts/Lobster-Regular.ttf"));
+        textView.setTypeface(AndroidUtilities.getTypeface("fonts/Roboto-Light.ttf"));
         return convertView;
     }
 

@@ -68,8 +68,8 @@ public class DialogCell extends BaseCell {
         if (namePaint == null) {
             namePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             namePaint.setTextSize(AndroidUtilities.dp(22));
-            namePaint.setColor(0xff7a5ba7);//TODO: Dialogs NAME
-            namePaint.setTypeface(AndroidUtilities.getTypeface("fonts/Lobster-Regular.ttf"));
+            namePaint.setColor(0xff87847C);//TODO: Dialogs NAME
+            //namePaint.setTypeface(AndroidUtilities.getTypeface("fonts/Roboto-Regular.ttf"));
         }
 
         if (nameEncryptedPaint == null) {
@@ -101,13 +101,13 @@ public class DialogCell extends BaseCell {
         if (messagePrintingPaint == null) {
             messagePrintingPaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             messagePrintingPaint.setTextSize(AndroidUtilities.dp(18));
-            messagePrintingPaint.setColor(0xff316f9f);
+            messagePrintingPaint.setColor(0xff7986CB);
         }
 
         if (timePaint == null) {
             timePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             timePaint.setTextSize(AndroidUtilities.dp(15));
-            timePaint.setColor(0xff9e9e9e);
+            timePaint.setColor(0xffFF4081);
         }
 
         if (countPaint == null) {

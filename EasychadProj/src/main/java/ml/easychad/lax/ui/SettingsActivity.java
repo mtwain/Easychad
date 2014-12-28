@@ -809,7 +809,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 textView.setText(LocaleController.getString("Online", R.string.Online));
 
                 textView = (TextView)view.findViewById(R.id.settings_name);
-                textView.setTypeface(AndroidUtilities.getTypeface("fonts/Lobster-Regular.ttf"));
+                textView.setTypeface(AndroidUtilities.getTypeface("fonts/Roboto-Regular.ttf"));
                 TLRPC.User user = MessagesController.getInstance().getUser(UserConfig.getClientUserId());
                 if (user == null) {
                     user = UserConfig.getCurrentUser();

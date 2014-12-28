@@ -5,19 +5,18 @@
     <!-- Bottom View Start-->
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="wrap_content"
+        android:orientation="vertical" android:layout_width="65dp"
         android:layout_height="match_parent"
         android:id="@+id/list_item_wrapper"
-        android:background="#ff000000"
         >
         <ImageButton
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/btnCall"
             android:layout_weight="1"
             android:src="@android:drawable/stat_sys_phone_call"
-            android:background="@null"
-            android:layout_margin="20dp" />
+            android:background="@drawable/list_selector2"
+             />
     </LinearLayout>
     <!-- Bottom View End-->
     <!-- Surface View Start -->

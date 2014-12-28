@@ -5,7 +5,9 @@
     <color name="gallery_background_color">#ff000000</color>
     <color name="settings_background_color">#ffffffff</color>
     <color name="divider">#dcdcdc</color>
-    <color name="header">#ff7a5ba7</color>
+    <color name="header">#3F51B5</color>
     <color name="yellow1">#fff5d76e</color>
     <color name="yellow2">#fffde860</color>
+    <color name="action_rows">#ff3F51B5</color>
+    <color name="selected">#ffFF4081</color>
 </resources>

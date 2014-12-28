@@ -26,7 +26,6 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -203,6 +202,7 @@ public class MessagesActivity extends BaseFragment implements NotificationCenter
             } else {
                 actionBarLayer.setDisplayUseLogoEnabled(true, R.drawable.ic_ab_logo);
                 actionBarLayer.setTitle(LocaleController.getString("AppName", R.string.AppName));
+                actionBarLayer.setTitleFont("fonts/Lobster-Regular.ttf");
 
 
                 menu.addItem(messages_list_menu_new_messages, R.drawable.ic_ab_compose);
@@ -923,8 +923,8 @@ public class MessagesActivity extends BaseFragment implements NotificationCenter
                         }
                     }
                     ((DialogCell) dialogView).setDialog(dialog);
-                    dialogView.setBackgroundColor(0x0f7C7695);
-                    ImageButton btnCall = (ImageButton) view.findViewById(R.id.btnCall);
+                    dialogView.setBackgroundColor(0xffffffff);
+                    View btnCall = view.findViewById(R.id.btnCall);
                     btnCall.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -955,31 +955,36 @@ public class MessagesActivity extends BaseFragment implements NotificationCenter
                                                 callUsers.add(sendToUser);
                                             }
                                         }
-                                        AlertDialog.Builder builderSingle = new AlertDialog.Builder(
-                                                getParentActivity());
-                                        builderSingle.setIcon(R.drawable.ic_launcher);
-                                        builderSingle.setTitle("Call to");
-                                        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                                                getParentActivity(),
-                                                android.R.layout.select_dialog_item);
-                                        for (int j=0;j<callUsers.size();j++){
-                                            arrayAdapter.add(callUsers.get(j).first_name+" "+callUsers.get(j).last_name);
+                                        if(callUsers.size()!=1) {
+                                            AlertDialog.Builder builderSingle = new AlertDialog.Builder(
+                                                    getParentActivity());
+                                            builderSingle.setIcon(R.drawable.ic_launcher);
+                                            builderSingle.setTitle("Call to");
+                                            final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                                                    getParentActivity(),
+                                                    android.R.layout.select_dialog_item);
+                                            for (int j = 0; j < callUsers.size(); j++) {
+                                                arrayAdapter.add(callUsers.get(j).first_name + " " + callUsers.get(j).last_name);
+                                            }
+
+                                            builderSingle.setAdapter(arrayAdapter,
+                                                    new DialogInterface.OnClickListener() {
+
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            String strName = arrayAdapter.getItem(which);
+
+                                                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+" + callUsers.get(which).phone));
+                                                            getParentActivity().startActivity(intent);
+
+
+                                                        }
+                                                    });
+                                            builderSingle.show();
+                                        }else{
+                                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+"+callUsers.get(0).phone));
+                                            getParentActivity().startActivity(intent);
                                         }
-
-                                        builderSingle.setAdapter(arrayAdapter,
-                                                new DialogInterface.OnClickListener() {
-
-                                                    @Override
-                                                    public void onClick(DialogInterface dialog, int which) {
-                                                        String strName = arrayAdapter.getItem(which);
-
-                                                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+"+callUsers.get(which).phone));
-                                                        getParentActivity().startActivity(intent);
-
-
-                                                    }
-                                                });
-                                        builderSingle.show();
                                     } else {
                                         user = MessagesController.getInstance().getUser(lower_id);
                                         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+"+user.phone));

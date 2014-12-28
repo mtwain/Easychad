@@ -141,9 +141,9 @@ public class ActionBarLayer extends FrameLayout {
 
         if (titleTextView != null && titleTextView.getVisibility() == VISIBLE) {
             if (!AndroidUtilities.isTablet() && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                titleTextView.setTextSize(16);
+                titleTextView.setTextSize(19);
             } else {
-                titleTextView.setTextSize(18);
+                titleTextView.setTextSize(21);
             }
 
             layoutParams = (LayoutParams) titleTextView.getLayoutParams();
@@ -289,18 +289,23 @@ public class ActionBarLayer extends FrameLayout {
         }
     }
 
+    public void setTitleFont(String font){
+        titleTextView.setTypeface(AndroidUtilities.getTypeface(font));
+    }
+
     public void setTitle(CharSequence value) {
         if (value != null && titleTextView == null) {
             titleTextView = new TextView(getContext());
             titleTextView.setGravity(Gravity.LEFT);
             titleTextView.setSingleLine(true);
             titleTextView.setLines(1);
-            titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/Lobster-Regular.ttf"));
+            titleTextView.setTypeface(AndroidUtilities.getTypeface("fonts/Roboto-Light.ttf"));
 
             titleTextView.setMaxLines(1);
             titleTextView.setEllipsize(TextUtils.TruncateAt.END);
             backButtonFrameLayout.addView(titleTextView);
             titleTextView.setTextColor(0xffffffff);
+
         }
         if (titleTextView != null) {
             titleTextView.setVisibility(value != null ? VISIBLE : GONE);

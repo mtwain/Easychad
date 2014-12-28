@@ -9,7 +9,6 @@
 package ml.easychad.lax.ui.Views;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -30,7 +29,7 @@ public class SettingsSectionLayout extends LinearLayout {
         textView = new TextView(getContext());
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
         textView.setTypeface(AndroidUtilities.getTypeface("fonts/Roboto-Regular.ttf"));
-        textView.setTextColor(0xff7a5ba7);//TODO
+        textView.setTextColor(0xff333399);//TODO
 
         addView(textView);
         LayoutParams layoutParams = (LayoutParams)textView.getLayoutParams();
@@ -47,7 +46,7 @@ public class SettingsSectionLayout extends LinearLayout {
         textView.setLayoutParams(layoutParams);
 
         View view = new View(getContext());
-        view.setBackgroundColor(0xff7a5ba7);
+        view.setBackgroundColor(0xff333399);//TODO : dividers
         addView(view);
         layoutParams = (LayoutParams)view.getLayoutParams();
         layoutParams.weight = LayoutParams.MATCH_PARENT;

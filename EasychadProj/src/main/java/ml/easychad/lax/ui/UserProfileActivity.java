@@ -523,7 +523,7 @@ public class UserProfileActivity extends BaseFragment implements NotificationCen
                 }
                 TextView textView = (TextView)view.findViewById(R.id.settings_name);
                 textView.setTextColor(0xff7a5ba7);//TODO: Dialogs NAME
-                textView.setTypeface(AndroidUtilities.getTypeface("fonts/Lobster-Regular.ttf"));
+                textView.setTypeface(AndroidUtilities.getTypeface("fonts/Roboto-Light.ttf"));
 
                 textView.setText(ContactsController.formatName(user.first_name, user.last_name));
                 onlineText.setText(LocaleController.formatUserStatus(user));

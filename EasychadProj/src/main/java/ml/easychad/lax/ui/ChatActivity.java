@@ -187,6 +187,7 @@ public class ChatActivity extends BaseFragment implements ContactsActivity.Conta
     private final static int attach_user = 12;
     private final static int call_user = 13;
     private final static int close_chat = 14;
+    private final static int browser = 15;
 
     private int delete_chat = 13;
     //TODO Add Attachment Item
@@ -678,7 +679,28 @@ public class ChatActivity extends BaseFragment implements ContactsActivity.Conta
 
                     }else if (id == close_chat){
                         //TODO:OnClickAttachUser
-                        finishFragment();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
+                        builder.setMessage(LocaleController.getString("AreYouSureDeleteAndExit", R.string.AreYouSureDeleteActivity));
+                        builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
+                        builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                MessagesController.getInstance().deleteUserFromChat((int) -dialog_id, MessagesController.getInstance().getUser(UserConfig.getClientUserId()), null);
+                                MessagesController.getInstance().deleteDialog(dialog_id, 0, false);
+                                if (AndroidUtilities.isTablet()) {
+                                    NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats, dialog_id);
+                                }
+                           /* presentFragment(new MessagesActivity(null), true);
+                            removeSelfFromStack();*/
+                                finishFragment();
+                            }
+                        });
+                        builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
+                        showAlertDialog(builder);
+                    }else if (id == browser){
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("http://www.google.com"));
+                        getParentActivity().startActivity(i);
                     }
                 }
             });
@@ -697,46 +719,25 @@ public class ChatActivity extends BaseFragment implements ContactsActivity.Conta
                 timeItem = menu.addItemResource(chat_enc_timer, R.layout.chat_header_enc_layout);
             }
 
-            ActionBarMenuItem deleteItem = menu.addItem(delete_chat, R.drawable.ic_action_delete_chat);
+            ActionBarMenuItem deleteItem = menu.addItem(delete_chat, R.drawable.ic_action_close);
             deleteItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //TODO: delete chat and goto Messages Activity
-                   /* if (AndroidUtilities.isTablet()) {
-                        NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats, dialog_id);
-                    }*/
-                    //TODO -----------------------------
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity());
-                    builder.setMessage(LocaleController.getString("AreYouSureDeleteAndExit", R.string.AreYouSureDeleteActivity));
-                    builder.setTitle(LocaleController.getString("AppName", R.string.AppName));
-                    builder.setPositiveButton(LocaleController.getString("OK", R.string.OK), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            MessagesController.getInstance().deleteUserFromChat((int) -dialog_id, MessagesController.getInstance().getUser(UserConfig.getClientUserId()), null);
-                            MessagesController.getInstance().deleteDialog(dialog_id, 0, false);
-                            if (AndroidUtilities.isTablet()) {
-                                NotificationCenter.getInstance().postNotificationName(NotificationCenter.closeChats, dialog_id);
-                            }
-                           /* presentFragment(new MessagesActivity(null), true);
-                            removeSelfFromStack();*/
-                            finishFragment();
-
-                        }
-                    });
-                    builder.setNegativeButton(LocaleController.getString("Cancel", R.string.Cancel), null);
-                    showAlertDialog(builder);
+                    finishFragment();
 
                 }
             });
-            ActionBarMenuItem item = menu.addItem(chat_menu_attach, R.drawable.ic_ab_attach);
+            ActionBarMenuItem item = menu.addItem(chat_menu_attach, R.drawable.ic_ab_other);
             item.addSubItem(attach_photo, LocaleController.getString("ChatTakePhoto", R.string.ChatTakePhoto), R.drawable.ic_attach_photo);
             item.addSubItem(attach_gallery, LocaleController.getString("ChatGallery", R.string.ChatGallery), R.drawable.ic_attach_gallery);
             item.addSubItem(attach_video, LocaleController.getString("ChatVideo", R.string.ChatVideo), R.drawable.ic_attach_video);
             item.addSubItem(attach_document, LocaleController.getString("ChatDocument", R.string.ChatDocument), R.drawable.ic_ab_doc);
             item.addSubItem(attach_location, LocaleController.getString("ChatLocation", R.string.ChatLocation), R.drawable.ic_attach_location);
             item.addSubItem(attach_user,"Contact",R.drawable.ic_action_male);
-            item.addSubItem(call_user,"Call",R.drawable.ic_action_male);
-            item.addSubItem(close_chat,"Close",R.drawable.ic_action_male);
+            item.addSubItem(call_user,"Call",R.drawable.ic_action_call);
+            item.addSubItem(browser,"Open Browser",R.drawable.ic_action_browser);
+            item.addSubItem(close_chat,"Close & Delete",R.drawable.ic_action_delete_chat);
+
             menuItem = item;
             //TODO Add Attachment Item
 

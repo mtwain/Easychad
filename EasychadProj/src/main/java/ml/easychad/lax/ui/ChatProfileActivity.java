@@ -621,7 +621,7 @@ public class ChatProfileActivity extends BaseFragment implements NotificationCen
                 avatarImage.processDetach = false;
                 TextView textView = (TextView)view.findViewById(R.id.settings_name);
                 textView.setTextColor(0xff7a5ba7);//TODO: Dialogs NAME
-                textView.setTypeface(AndroidUtilities.getTypeface("fonts/Lobster-Regular.ttf"));
+                textView.setTypeface(AndroidUtilities.getTypeface("fonts/Roboto-Light.ttf"));
 
                 textView.setText(chat.title);
 

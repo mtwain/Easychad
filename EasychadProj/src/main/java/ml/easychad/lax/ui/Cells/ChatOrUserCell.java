@@ -65,8 +65,8 @@ public class ChatOrUserCell extends BaseCell {
         if (namePaint == null) {
             namePaint = new TextPaint(TextPaint.ANTI_ALIAS_FLAG);
             namePaint.setTextSize(AndroidUtilities.dp(21));
-            namePaint.setTypeface(AndroidUtilities.getTypeface("fonts/Lobster-Regular.ttf"));
-            namePaint.setColor(0xff7a5ba7);
+            namePaint.setTypeface(AndroidUtilities.getTypeface("fonts/Roboto-Regular.ttf"));
+            namePaint.setColor(0xff3F51B5);
         }
 
         if (nameEncryptedPaint == null) {
